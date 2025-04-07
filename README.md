@@ -6,15 +6,15 @@ An institutional-grade **fundamental stock screener** for Indian equities that c
 
 ## 🧭 Table of Contentš
 
-- [🔍 Project Overview](#-project-overview)
-- [📐 Core Logic](#-core-logic)
-- [📊 Financial Metrics Used](#-financial-metrics-used)
-- [🗂️ Project Structure](#-project-structure)
-- [⚙️ Setup Instructions](#-setup-instructions)
-- [📷 Deployment Options](#-deployment-options)
-- [💡 Use Cases](#-use-cases)
-- [📌 Future Enhancements](#-future-enhancements)
-- [📬 Contact](#-contact)
+- [Project Overview](#-project-overview)
+- [Core Logic](#-core-logic)
+- [Financial Metrics Used](#-financial-metrics-used)
+- [Project Structure](#-project-structure)
+- [Setup Instructions](#-setup-instructions)
+- [Deployment Options](#-deployment-options)
+- [ Use Cases](#-use-cases)
+- [ Future Enhancements](#-future-enhancements)
+- [ Contact](#-contact)
 
 ---
 
@@ -59,23 +59,14 @@ Example:
 
 Via `yfinance`:
 
-- Return on Equity (ROE, proxy for ROIC)
-- Free Cash Flow (FCF)
-- Market Capitalization
-- Beta
+    - Return on Equity (ROE, proxy for ROIC)
+    - Free Cash Flow (FCF)
+    - Market Capitalization
 
 ### 6. ✅ Screening Conditions
 
 - **ROIC > CoE** → Value creation
 - **FCF Yield > 3%** → Strong cash generation
-
-### 7. 📤 Output
-
-- Filtered results in table
-- Downloadable CSV
-- Bubble Chart (ROIC vs FCF Yield vs Beta)
-
----
 
 ## 📊 Financial Metrics Used
 
@@ -90,7 +81,27 @@ Via `yfinance`:
 
 ## 🗂️ Project Structure
 
-stock-screener-algo/ │ ├── app.py # Streamlit frontend app ├── screener.py # Core screening logic (ROIC, FCF Yield, CAPM) ├── data.py # Real-time financial data from yfinance ├── config.py # Sector mappings, constants, macro-stage data ├── utils.py # Helpers: CoE calc, FCF yield, ROIC proxy ├── requirements.txt # Python dependencies ├── README.md # This file └── screenshots/ # (Optional) UI snapshots
+```
+stock-screener-algo/
+│
+├── app/                            # Frontend & UI logic
+│   └── app.py                      # Streamlit app entry point
+│
+├── core/                           # Core screening engine
+│   ├── screener.py                 # Main screening logic (ROIC, FCF Yield, CAPM)
+│   ├── utils.py                    # Financial formulas: CoE, FCF Yield, ROIC proxy
+│   └── config.py                   # Constants, sector mappings, macro-stage definitions
+│
+├── data/                           # Data access layer
+│   └── data.py                     # Real-time financial data using yfinance
+│
+├── assets/                         # Static assets
+│   └── screenshots/                # (Optional) UI snapshots
+│
+├── requirements.txt                # Python dependencies
+├── README.md                       # Project overview and instructions
+└── .gitignore                      # Files to ignore in version control
+```
 
 ---
 
@@ -104,59 +115,68 @@ stock-screener-algo/ │ ├── app.py # Streamlit frontend app ├── scr
 ### 🔧 Installation
 
 ```bash
-git clone https://github.com/yourusername/stock-screener-algo.git
-cd stock-screener-algo
-pip install -r requirements.txt
+git  clone  https://github.com/yourusername/stock-screener-algo.git
+cd  stock-screener-algo
+pip  install  -r  requirements.txt
 ```
 
 ▶️ Run the App
+
+```bash
 streamlit run app.py
-Then open your browser to http://localhost:8501.
+```
 
-🌍 Deployment Options
+- Then open your browser to http://localhost:8501.
 
-🔹 1. Deploy via Docker
+## Deployment Options
+
+**1. Deploy via Docker**
+
 Run your app in an isolated container using Docker
-📦 Step-by-Step
 
-Clone the repository
+- Clone the repository
+
+```bash
 git clone https://github.com/yourusername/stock-screener-algo.git
 cd stock-screener-algo
-Build the Docker image
-docker build -t stock-screener .
-Run the Docker container
-docker run -p 8501:8501 stock-screener
-Visit your app Open your browser and go to:
-👉 http://localhost:8501
-🔹 2. Deploy on Streamlit Cloud
-The easiest no-setup deployment for Streamlit apps
-🧭 Step-by-Step
+```
 
-Push this project to your GitHub repo
-Go to streamlit.io/cloud
-Click “New App”
-Connect your GitHub repo
-Set app.py as the entry point
-Click “Deploy”
+- Build the Docker image
+
+```bash
+docker build -t stock-screener .
+```
+
+- Run the Docker container
+
+```bash
+docker run -p 8501:8501 stock-screener
+```
+
+- Visit your app Open your browser and go to: http://localhost:8501
+
+**2. Deploy on Streamlit Cloud**
+
+- Push this project to your GitHub repo
+- Go to streamlit.io/cloud
+- Click “New App”
+- Connect your GitHub repo
+- Set app.py as the entry point
+- Click “Deploy”
+
 ✅ Done! Your app will be live and publicly accessible with a shareable URL.
 
-💡 Use Cases
+## Use Cases
 
-📈 Individual Investors screening Indian stocks based on macro + fundamentals
-💼 Portfolio Managers creating watchlists based on risk-adjusted metrics
-🧪 Education tool to learn macro-to-micro investing
-🧠 Base for backtesting or quant models
-📌 Future Enhancements
+- Individual Investors screening Indian stocks based on macro + fundamentals
+- Portfolio Managers creating watchlists based on risk-adjusted metrics
+- Education tool to learn macro-to-micro investing
+- Base for backtesting or quant models
 
-📈 Add earnings/momentum filters
-⏱ Historical ROIC trends (3–5 yr avg for long-term investing)
-💬 NLP for earnings sentiment analysis
-🔔 Alert system (Telegram, Email)
-☁️ Deploy on Streamlit Cloud or Docker
-📬 Contact
+## Future Enhancements
 
-Made with ❤️ by Your Name
-
-📧 your.email@example.com
-🌐 LinkedIn
-⭐ Star this repo
+- Add earnings/momentum filters
+- Historical ROIC trends (3–5 yr avg for long-term investing)
+- NLP for earnings sentiment analysis
+- Alert system (Telegram, Email)
+- Deploy on Streamlit Cloud or Docker
